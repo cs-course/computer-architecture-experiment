@@ -1,0 +1,10 @@
+{
+    "name": "ubuntu/bionic64",
+    "versions": [{
+        "version": "20191030.0.0",
+        "providers": [{
+            "name": "virtualbox",
+            "url": "bionic-server-cloudimg-amd64-vagrant.box"
+        }]
+    }]
+} 
