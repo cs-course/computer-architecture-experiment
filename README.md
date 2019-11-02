@@ -10,7 +10,7 @@
 
 2. 建立实验用 Linux 64-bit 虚拟机环境
     - 安装 **VirtualBox 虚拟机** ([下载](https://www.virtualbox.org/wiki/Downloads))
-    - 安装 **Vagrant 虚拟机管理工具** ([下载](https://www.vagrantup.com/))
+    - 安装 **Vagrant 虚拟机管理工具** ([下载](https://www.vagrantup.com/downloads.html))
     - 导入基础镜像
       - 下载镜像至资料库目录，下载地址：[微云](https://share.weiyun.com/5zo2M2m)，[官方](http://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64-vagrant.box)
       - 进入 Windows 命令行窗口
