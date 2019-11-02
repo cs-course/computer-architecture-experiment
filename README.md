@@ -64,13 +64,16 @@ free ……
 
 ### 实验准备
 
-基于实验用虚拟机
+1. 开启 Windows 命令行窗口，进入资料库目录，执行 `vagrant up` 开启实验用虚拟机(Lab0)
 
-解压缩CacheLab实验资料
+2. 解压缩 `cachelab-handout.tar.gz` 文件进资料库中 data 目录
+3. 执行 `vagrant ssh default` 进入虚拟机控制台，执行 `cd /vagrant_data` 进入此目录，用 `ls` 命令确认 cachelab 实验文件已就位
 
 ### 实验内容
 
-CacheLab
+…缓存仿真器实现…
+
+…矩阵转置…
 
 ### 参考
 
@@ -80,13 +83,16 @@ CacheLab
 
 ### 实验准备
 
-基于实验用虚拟机
+1. 开启 Windows 命令行窗口，进入资料库目录，执行 `vagrant up` 开启实验用虚拟机(Lab0)
 
-确认mdadm与Linux内核配置
+2. 执行 `vagrant ssh default` 进入虚拟机控制台
+3. 执行 `cat /proc/mdstat` 确认 mdadm 与 Linux 内核配置正常
 
 ### 实验内容
 
-使用mdadm配置软阵列
+…创建几个loop设备…
+
+…使用mdadm配置软阵列…
 
 ### 参考
 
