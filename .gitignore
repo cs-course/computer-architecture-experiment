@@ -1,3 +1,4 @@
 *.box
+*.log
 .vagrant/
 data/
