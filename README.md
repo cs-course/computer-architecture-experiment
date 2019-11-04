@@ -6,11 +6,13 @@
 
 1. 抓取资料库
     - 安装 [Windows版本git](https://gitforwindows.org/) 后执行 `git clone https://github.com/cs-course/computer-architecture-experiment`
-    - 或者 [下载](https://github.com/cs-course/computer-architecture-experiment/archive/master.zip) 后解压缩
-
+      - git 详细知识可以通过 [git-tutorial](https://github.com/cs-course/git-tutorial) 学习
+- 或者 [下载](https://github.com/cs-course/computer-architecture-experiment/archive/master.zip) 后解压缩
+    
 2. 建立实验用 Linux 64-bit 虚拟机环境
     - 安装 **VirtualBox 虚拟机** ([下载](https://www.virtualbox.org/wiki/Downloads))
     - 安装 **Vagrant 虚拟机管理工具** ([下载](https://www.vagrantup.com/downloads.html))
+      - Vagrant 详细知识可以通过 [vagrant-tutorial](https://github.com/cs-course/vagrant-tutorial) 学习
     - 导入基础镜像
       - 下载镜像至资料库目录，下载地址：[微云](https://share.weiyun.com/5zo2M2m)，[官方](http://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64-vagrant.box)
       - 进入 Windows 命令行窗口
@@ -21,7 +23,7 @@
       - 在资料库目录中执行`vagrant up`
       - 执行`vagrant status`检查是否正常运行
       - 使用完成后，执行 `vagrant halt` 关闭虚拟机，下次仍通过 `vagrant up` 重启虚拟机
-      - 若不再需要，或需重建，可用 `vagrant destroy -f` 清除
+      - **注意**：若不再需要，或需重建，可用 `vagrant destroy -f` 清除
 
 ### 实验内容
 
@@ -54,7 +56,7 @@ Mem:           985M         76M        726M        588K        181M        771M
 Swap:            0B          0B          0B
 ```
 
-在 [Vagrantfile](./Vagrantfile) 里面已经设置虚拟机内存为 1GB
+**注意**：在 [Vagrantfile](./Vagrantfile) 里面已经设置虚拟机内存为 1GB。
 
 3. 外部存储器信息
 
@@ -106,10 +108,10 @@ vagrant@ubuntu-bionic:~$
 
 ### 实验准备
 
-1. 开启 Windows 命令行窗口，进入资料库目录，执行 `vagrant up` 开启实验用虚拟机(Lab0)
+1. 开启 Windows 命令行窗口，进入资料库目录，执行 `vagrant up` 开启实验用虚拟机 (*在 Lab0 中建立*)
 2. 解压缩 cachelab-handout.tar.gz 文件进资料库中 data 目录
-   - 此目录与主机共享，作业保存在主机中
-   - 参考命令行 `cd /vagrant_data && tar xzvf ~/cachelab-handout.tar.gz`
+   - **注意**：此目录与主机共享，以便将作业保存在主机中
+   - 使用 `vagrant ssh` 进入虚拟机，执行命令行 `cd /vagrant_data && tar xzvf ~/cachelab-handout.tar.gz`
    - 或在主机中使用工具软件将 cachelab-handout.tar.gz 解压缩进data目录
 3. 执行 `vagrant ssh default` 进入虚拟机控制台，执行 `cd /vagrant_data` 进入此目录，用 `ls` 命令确认 cachelab 实验文件已就位
 
@@ -127,10 +129,17 @@ vagrant@ubuntu-bionic:~$
 
 ### 实验准备
 
-1. 开启 Windows 命令行窗口，进入资料库目录，执行 `vagrant up` 开启实验用虚拟机(Lab0)
+1. 开启 Windows 命令行窗口，进入资料库目录，执行 `vagrant up` 开启实验用虚拟机 (*在 Lab0 中建立*)
 
-2. 执行 `vagrant ssh default` 进入虚拟机控制台
+2. 执行 `vagrant ssh` 进入虚拟机
 3. 执行 `cat /proc/mdstat` 确认 mdadm 与 Linux 内核配置正常
+
+```bash
+vagrant@ubuntu-bionic:~$ cat /proc/mdstat
+Personalities : [linear] [multipath] [raid0] [raid1] [raid6] [raid5] [raid4] [raid10]
+unused devices: <none>
+vagrant@ubuntu-bionic:~$
+```
 
 ### 实验内容
 
