@@ -7,8 +7,8 @@
 1. 抓取资料库
     - 安装 [Windows版本git](https://gitforwindows.org/) 后执行 `git clone https://github.com/cs-course/computer-architecture-experiment`
       - git 详细知识可以通过 [git-tutorial](https://github.com/cs-course/git-tutorial) 学习
-- 或者 [下载](https://github.com/cs-course/computer-architecture-experiment/archive/master.zip) 后解压缩
-    
+    - 或者 [下载](https://github.com/cs-course/computer-architecture-experiment/archive/master.zip) 后解压缩
+
 2. 建立实验用 Linux 64-bit 虚拟机环境
     - 安装 **VirtualBox 虚拟机** ([下载](https://www.virtualbox.org/wiki/Downloads))
     - 安装 **Vagrant 虚拟机管理工具** ([下载](https://www.vagrantup.com/downloads.html))
