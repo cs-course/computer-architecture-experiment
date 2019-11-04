@@ -27,9 +27,51 @@
 
 检查系统配置
 
-lscpu ……
+1. 处理器信息
 
-free ……
+```bash
+vagrant@ubuntu-bionic:~$ lscpu
+Architecture:        x86_64 # 这些内容各机不完全一样
+CPU op-mode(s):      32-bit, 64-bit
+Byte Order:          Little Endian
+CPU(s):              2      # CPU核数 (虚拟机只使用部分主机处理器核)
+On-line CPU(s) list: 0,1
+...
+L1d cache:           32K    # L1数据缓存
+L1i cache:           32K    # L1指令缓存
+L2 cache:            256K   # L2缓存
+L3 cache:            6144K  # L3缓存
+NUMA node0 CPU(s):   0,1
+...
+```
+
+2. 主存储器信息
+
+```bash
+vagrant@ubuntu-bionic:~$ free -h
+              total        used        free      shared  buff/cache   available
+Mem:           985M         76M        726M        588K        181M        771M
+Swap:            0B          0B          0B
+```
+
+在 [Vagrantfile](./Vagrantfile) 里面已经设置虚拟机内存为 1GB
+
+3. 外部存储器信息
+
+```bash
+vagrant@ubuntu-bionic:~$ lsblk
+NAME   MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
+sda      8:0    0  10G  0 disk
+└─sda1   8:1    0  10G  0 part /
+sdb      8:16   0  10M  0 disk
+vagrant@ubuntu-bionic:~$ df -h -x tmpfs
+Filesystem      Size  Used Avail Use% Mounted on
+udev            481M     0  481M   0% /dev
+/dev/sda1       9.7G  1.7G  8.1G  17% /
+vagrant         237G  175G   62G  74% /vagrant
+vagrant_data    237G  175G   62G  74% /vagrant_data
+vagrant@ubuntu-bionic:~$
+```
 
 ## Lab1-指令系统及指令集并行
 
@@ -65,8 +107,10 @@ free ……
 ### 实验准备
 
 1. 开启 Windows 命令行窗口，进入资料库目录，执行 `vagrant up` 开启实验用虚拟机(Lab0)
-
-2. 解压缩 `cachelab-handout.tar.gz` 文件进资料库中 data 目录
+2. 解压缩 cachelab-handout.tar.gz 文件进资料库中 data 目录
+   - 此目录与主机共享，作业保存在主机中
+   - 参考命令行 `cd /vagrant_data && tar xzvf ~/cachelab-handout.tar.gz`
+   - 或在主机中使用工具软件将 cachelab-handout.tar.gz 解压缩进data目录
 3. 执行 `vagrant ssh default` 进入虚拟机控制台，执行 `cd /vagrant_data` 进入此目录，用 `ls` 命令确认 cachelab 实验文件已就位
 
 ### 实验内容
