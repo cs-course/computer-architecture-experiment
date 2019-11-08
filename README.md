@@ -110,16 +110,16 @@ vagrant@ubuntu-bionic:~$
 
 1. 开启 Windows 命令行窗口，进入资料库目录，执行 `vagrant up` 开启实验用虚拟机 (*在 Lab0 中建立*)
 2. 执行 `vagrant ssh` 进入虚拟机
-3. 解压缩 cachelab-handout.tar.gz 文件进资料库中 data 目录
-   - **注意**：此目录与虚拟机共享，在虚拟机中是 `/vagrant_data`，用于将作业保存在主机中
-   - 执行命令行 `cd /vagrant_data && tar xzvf ~/cachelab-handout.tar.gz` 解压缩
-   - 或者在主机中使用工具软件将 cachelab-handout.tar.gz 解压缩进data目录，然后用 `cd /vagrant_data && ls` 进入此目录确认 cachelab 实验文件已就位
+3. 进入 `/vagrant_data` 目录解压缩 cachelab-handout.tar.gz 文件
+   - **注意**：此虚拟机目录与主机共享，在主机中位于资料库 `data` 子目录，用于将作业保存在主机中
+   - 执行命令行 `cd /vagrant_data && tar xzvf cachelab-handout.tar.gz` 解压缩
+   - 或者在主机中使用工具软件将 cachelab-handout.tar.gz 解压缩进data目录，然后在虚拟机内用 `cd /vagrant_data && ls` 进入此目录确认 cachelab 实验文件已就位
 
 ### 实验内容
 
 …缓存仿真器实现…
 
-…矩阵转置…
+…矩阵转置（可选）…
 
 ### 参考
 
