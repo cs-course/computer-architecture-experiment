@@ -84,7 +84,7 @@ vagrant@ubuntu-bionic:~$
 
 ### 实验内容
 
-……
+TBA.
 
 ### 参考
 
@@ -98,7 +98,7 @@ vagrant@ubuntu-bionic:~$
 
 ### 实验内容
 
-……
+TBA.
 
 ### 参考
 
@@ -117,13 +117,13 @@ vagrant@ubuntu-bionic:~$
 
 ### 实验内容
 
-…缓存仿真器实现…
-
-…矩阵转置（可选）…
+1. 缓存仿真器实现
+2. 矩阵转置（可选）
 
 ### 参考
 
   - [Computer Systems: A Programmer's Perspective, 3/E (CS:APP3e)](http://www.csapp.cs.cmu.edu/)，[实验作业](http://csapp.cs.cmu.edu/3e/labs.html)
+  - [2015 CMU 15-213 CSAPP 深入理解计算机系统 课程视频 (Part12)](https://www.bilibili.com/video/BV1iW411d7hd?p=12)
 
 ## Lab4-输入输出系统
 
@@ -142,23 +142,12 @@ vagrant@ubuntu-bionic:~$
 
 ### 实验内容
 
-…创建几个loop设备…
-
-…使用mdadm配置软阵列…
+1. 创建几个loop设备
+2. 使用mdadm配置软阵列
 
 ### 参考
 
   - [在Linux里面建立虚拟块设备 (loop设备)](https://www.thegeekdiary.com/how-to-create-virtual-block-device-loop-device-filesystem-in-linux)
   - [在Ubuntu 16.04里使用mdadm建立RAID](https://www.digitalocean.com/community/tutorials/how-to-create-raid-arrays-with-mdadm-on-ubuntu-16-04)
   - [软阵列(Software RAID) HOWTO::RAID配置](https://raid.wiki.kernel.org/index.php/RAID_setup)
-
-## Lab5-互连网络
-
-### 实验准备
-
-……
-
-### 实验内容
-
-……
 
