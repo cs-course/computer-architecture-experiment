@@ -110,7 +110,7 @@ TBA.
 
 1. 开启 Windows 命令行窗口，进入资料库目录，执行 `vagrant up` 开启实验用虚拟机 (*在 Lab0 中建立*)
 2. 执行 `vagrant ssh` 进入虚拟机
-3. 进入 `/vagrant_data` 目录解压缩 cachelab-handout.tar.gz 文件
+3. 进入 `/vagrant_data` 目录解压缩 [cachelab-handout.tar.gz](./cachelab-extended/cachelab-handout.tar.gz) 文件
    - **注意**：此虚拟机目录与主机共享，在主机中位于资料库 `data` 子目录，用于将作业保存在主机中
    - 执行命令行 `cd /vagrant_data && tar xzvf cachelab-handout.tar.gz` 解压缩
    - 或者在主机中使用工具软件将 cachelab-handout.tar.gz 解压缩进data目录，然后在虚拟机内用 `cd /vagrant_data && ls` 进入此目录确认 cachelab 实验文件已就位
@@ -124,6 +124,7 @@ TBA.
 
   - [Computer Systems: A Programmer's Perspective, 3/E (CS:APP3e)](http://www.csapp.cs.cmu.edu/)，[实验作业](http://csapp.cs.cmu.edu/3e/labs.html)
   - [2015 CMU 15-213 CSAPP 深入理解计算机系统 课程视频 (Part12)](https://www.bilibili.com/video/BV1iW411d7hd?p=12)
+  - [手工演算工具](./cachelab-extended)
 
 ## Lab4-输入输出系统
 
