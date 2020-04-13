@@ -1,6 +1,6 @@
 # 系统结构实验课
 
-## 基础知识
+## Lab0-基础知识
 
 ### 实验准备
 
@@ -77,13 +77,13 @@ vagrant_data    237G  175G   62G  74% /vagrant_data
 vagrant@ubuntu-bionic:~$
 ```
 
-## 存储系统
+## Lab1-存储系统
 
 ### 实验准备
 
 如果是Linux环境，解压缩 cachelab-handout.tar.gz 即可。
 
-如果是Windows环境则需要使用前面建立的虚拟机：
+如果是Windows环境则需要使用前面(Lab0)建立的虚拟机：
 
 1. 开启 Windows 命令行窗口，进入资料库目录，执行 `vagrant up` 开启实验用虚拟机；
 2. 执行 `vagrant ssh` 进入虚拟机，可以看到 `/vagrant_data` 目录，内容对应于主机 `data` 目录，可以先在主机里将 cachelab-handout.tar.gz 放进去；
@@ -101,7 +101,7 @@ vagrant@ubuntu-bionic:~$
   - [CMU 15-213 CSAPP 深入理解计算机系统 课程视频 (Part12)](https://www.bilibili.com/video/BV1iW411d7hd?p=12)
   - [手工演算工具](./cachelab-extended)
 
-## 输入输出系统
+## Lab2-输入输出系统
 
 ### 实验准备
 
