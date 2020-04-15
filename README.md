@@ -95,6 +95,8 @@ vagrant@ubuntu-bionic:~$
 1. 缓存仿真器实现
 2. 矩阵转置（可选）
 
+**注意**：如果运行 `./test-csim` 存在问题，比方说 MSYS/MinGW 环境，可以使用[脚本版](./cachelab-extended/test-csim)，进入 cachelab-handout 文件夹执行 `<资料库路径>/computer-architecture-experiment/cachelab-extended/test-csim.sh` 即可。
+
 ### 参考
 
   - [Computer Systems: A Programmer's Perspective, 3/E (CS:APP3e)](http://www.csapp.cs.cmu.edu/)，[实验作业](http://csapp.cs.cmu.edu/3e/labs.html)

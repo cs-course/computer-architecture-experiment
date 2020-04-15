@@ -1,3 +1,4 @@
+#!/bin/bash
 printf "              Your simulator\n"
 printf "     (s,E,b)  %-10s %-10s %-10s\n" Hits Misses Evicts
 while read s e b t r; do
