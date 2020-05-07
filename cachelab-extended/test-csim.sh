@@ -1,10 +1,10 @@
 #!/bin/bash
 printf "              Your simulator\n"
-printf "     (s,E,b)  %-10s %-10s %-10s\n" Hits Misses Evicts
+printf "     (s,E,b)  %10s %10s %10s\n" Hits Misses Evicts
 while read s e b t r; do
     result=`./csim -s $s -E $e -b $b -t $t | sed 's/[^0-9 ]*//g'`
     [ "$result" == "$r" ] && printf "Pass " || printf "     "
-    printf "(%s,%s,%s)  %-10s %-10s %-10s  %s\n" $s $e $b $result $t
+    printf "(%s,%s,%s)  %10s %10s %10s  %s\n" $s $e $b $result $t
 done <<< \
 """1 1 1 traces/yi2.trace 9 8 6
 4 2 4 traces/yi.trace 4 5 2
