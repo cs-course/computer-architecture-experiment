@@ -2,8 +2,7 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-  config.vm.box = "ubuntu/bionic64"
-  config.vm.box_version = "20191030.0.0"
+  config.vm.box = "ubuntu/focal64"
   config.vm.box_check_update = false
 
   config.vm.provider "virtualbox" do |vb|

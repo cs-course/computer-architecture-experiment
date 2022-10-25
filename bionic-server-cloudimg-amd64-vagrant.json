@@ -1,7 +1,7 @@
 {
-    "name": "ubuntu/bionic64",
+    "name": "ubuntu/focal64",
     "versions": [{
-        "version": "20191030.0.0",
+        "version": "20220530.0.0",
         "providers": [{
             "name": "virtualbox",
             "url": "bionic-server-cloudimg-amd64-vagrant.box"
