@@ -5,7 +5,7 @@
 #include <errno.h>
 #include <stdbool.h>
 
-#define V 128
+#define V 512
 #define E V*8
 
 /* Markers used to bound trace regions of interest */
