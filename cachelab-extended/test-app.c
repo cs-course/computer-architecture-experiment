@@ -15,10 +15,10 @@
 #include <sys/wait.h> // fir WEXITSTATUS
 #include <limits.h> // for INT_MAX
 
-/* 
+/*
  * eval_perf - Evaluate the performance of the registered transpose functions
  */
-void eval_perf(unsigned int s, unsigned int E, unsigned int b, char *csr_fn)
+void eval_perf(unsigned int s, unsigned int E, unsigned int b, char *app_cmd)
 {
     int flag;
     unsigned int len;
@@ -27,17 +27,17 @@ void eval_perf(unsigned int s, unsigned int E, unsigned int b, char *csr_fn)
     char filename[128];
 
     /* Open the complete trace file */
-    FILE* full_trace_fp;  
-    FILE* part_trace_fp; 
+    FILE* full_trace_fp;
+    FILE* part_trace_fp;
 
     /* Evaluate the performance of bfs function */
     printf("\nStep 1: Validating and generating memory traces\n");
 
     /* Use valgrind to generate the trace */
-    sprintf(cmd, "valgrind --tool=lackey --trace-mem=yes --log-fd=1 -v ./bfs %s > trace.tmp", csr_fn);
+    sprintf(cmd, "valgrind --tool=lackey --trace-mem=yes --log-fd=1 -v %s > trace.tmp", app_cmd);
     flag=WEXITSTATUS(system(cmd));
     if (0!=flag) {
-        printf("Validation error.\nSkipping performance evaluation for this function.\n");      
+        printf("Validation error.\nSkipping performance evaluation for this function.\n");
         exit(1);
     }
 
@@ -50,8 +50,8 @@ void eval_perf(unsigned int s, unsigned int E, unsigned int b, char *csr_fn)
     full_trace_fp = fopen("trace.tmp", "r");
     assert(full_trace_fp);
 
-    /* Filtered trace for each transpose function goes in a separate file */
-    sprintf(filename, "%s-bfs.trace", csr_fn);
+    /* Filtered trace for each app goes in a separate file */
+    sprintf(filename, "%s.trace", app_cmd);
     part_trace_fp = fopen(filename, "w");
     assert(part_trace_fp);
 
@@ -63,7 +63,7 @@ void eval_perf(unsigned int s, unsigned int E, unsigned int b, char *csr_fn)
         if (buf[0]==' ' && buf[2]==' ' &&
             (buf[1]=='S' || buf[1]=='M' || buf[1]=='L' )) {
             sscanf(buf+3, "%llx,%u", &addr, &len);
-    
+
             /* If start marker found, set flag */
             if (addr == marker_start)
                 flag = 1;
@@ -93,8 +93,8 @@ void eval_perf(unsigned int s, unsigned int E, unsigned int b, char *csr_fn)
 
     /* Run the reference simulator */
     printf("Step 2: Evaluating performance (s=%d, E=%d, b=%d)\n", s, E, b);
-    sprintf(cmd, "./csim-ref -s %u -E %u -b %u -t %s-bfs.trace", 
-            s, E, b, csr_fn);
+    sprintf(cmd, "./csim-ref -s %u -E %u -b %u -t %s.trace",
+            s, E, b, app_cmd);
     system(cmd);
 
 }
@@ -106,8 +106,8 @@ void usage(char *argv[]){
     printf("Usage: %s [-h] -i <CSR file name>\n", argv[0]);
     printf("Options:\n");
     printf("  -h         Print this help message.\n");
-    printf("  -i <csr>   CSR file name\n");
-    printf("Example: %s -i %s\n", argv[0], "graph-csr.txt");       
+    printf("  -i <app>   app cmd\n");
+    printf("Example: %s -i %s\n", argv[0], "./bfs");
 }
 
 /*
@@ -136,12 +136,12 @@ void sigalrm_handler(int signum){
 int main(int argc, char* argv[])
 {
     char c;
-    char *csr_fn;
+    char *app_cmd;
 
     while ((c = getopt(argc,argv,"i:h")) != -1) {
         switch(c) {
         case 'i':
-            csr_fn = optarg;
+            app_cmd = optarg;
             break;
         case 'h':
             usage(argv);
@@ -151,7 +151,7 @@ int main(int argc, char* argv[])
             exit(1);
         }
     }
-  
+
     /* Install SIGSEGV and SIGALRM handlers */
     if (signal(SIGSEGV, sigsegv_handler) == SIG_ERR) {
         fprintf(stderr, "Unable to install SIGALRM handler\n");
@@ -167,7 +167,7 @@ int main(int argc, char* argv[])
     alarm(600);
 
     /* Check the performance of the student's transpose function */
-    eval_perf(5, 1, 5, csr_fn);
-  
+    eval_perf(5, 1, 5, app_cmd);
+
     return 0;
 }
