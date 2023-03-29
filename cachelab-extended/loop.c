@@ -6,7 +6,7 @@
 volatile char MARKER_START, MARKER_END;
 
 int main() {
-    static short arr[8192];
+    static int arr[8192];
     int offset = 0, step = 2, tmp = 0;
 
     /* Record marker addresses */
