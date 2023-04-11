@@ -18,14 +18,14 @@ def simulate_array_failure():
         return True
     return False
 
-def simulate_mtff(num_simulations):
+def simulate_mttf(num_simulations):
     """Simulate the MTTF of the array using the given number of simulations."""
-    total_time_until_failure = 0
+    total_failure = 0
     for i in range(num_simulations):
         if simulate_array_failure():
-            total_time_until_failure += 1
-    return num_simulations / total_time_until_failure
+            total_failure += 1
+    return num_simulations / total_failure
 
 # Example usage:
-mttf = simulate_mtff(80000)
+mttf = simulate_mttf(80000)
 print("Estimated MTTF:", mttf)
