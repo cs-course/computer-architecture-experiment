@@ -9,7 +9,11 @@ from argparse import *
 def simulate_disk_failure(prob, mttr):
     """Simulate the failure of a single disk."""
     while True:
-        yield random.random() < prob
+        if random.random() < prob:
+            for i in range(mttr + 1):
+                yield True
+        else:
+            yield False
 
 def simulate_array_failure(disks, redundancy):
     """Simulate the failure of the entire array."""
