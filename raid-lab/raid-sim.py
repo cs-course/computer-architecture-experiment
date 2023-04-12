@@ -6,22 +6,22 @@
 import random
 from argparse import *
 
-def simulate_disk_failure(prob):
+def simulate_disk_failure(prob, mttr):
     """Simulate the failure of a single disk."""
     while True:
         yield random.random() < prob
 
 def simulate_array_failure(disks, redundancy):
     """Simulate the failure of the entire array."""
-    if sum([next(disks[i]) for i in range(len(disks))]) > redundancy:
+    if sum([next(disk) for disk in disks]) > redundancy:
         return True
     return False
 
-def simulate_mttf(num_simulations, num_disks, prob, redundancy, mttr):
+def simulate_mttf(num_simulations, num_disks, prob, mttr, redundancy):
     """Simulate the MTTF of the array using the given number of simulations."""
     disks = []
     for i in range(num_disks):
-        disks.append(simulate_disk_failure(prob))
+        disks.append(simulate_disk_failure(prob, mttr))
 
     total_failure = 0
     for i in range(num_simulations):
@@ -42,15 +42,15 @@ def main():
                         default=0.05,
                         help='Annual failure probability. Default=0.05')
 
-    parser.add_argument('-e', '--redundancy',
-                        type=int,
-                        default=0,
-                        help='Number of redundancy disks. Default=0 (no redundancy)')
-
     parser.add_argument('-r', '--mttr',
                         type=int,
                         default=0,
                         help='Mean time to recover. Default=0 (immediately)')
+
+    parser.add_argument('-e', '--redundancy',
+                        type=int,
+                        default=0,
+                        help='Number of redundancy disks. Default=0 (no redundancy)')
 
     parser.add_argument('-l', '--elapsing',
                         type=int,
@@ -64,7 +64,7 @@ def main():
     mttr = args.mttr
     elapsing = args.elapsing
 
-    mttf = simulate_mttf(elapsing, num_disks, failure_prob, redundancy, mttr)
+    mttf = simulate_mttf(elapsing, num_disks, failure_prob, mttr, redundancy)
     print("Estimated MTTF:", mttf)
 
 main()
