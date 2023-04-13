@@ -39,36 +39,41 @@ def main():
     parser.add_argument('-n', '--numdisks',
                         type=int,
                         default=5,
+                        metavar='DISKS',
                         help='Number of disks in the RAID array. Default=5')
 
-    parser.add_argument('-f', '--failureprob',
+    parser.add_argument('-f', '--afr',
                         type=float,
                         default=0.05,
-                        help='Annual failure probability. Default=0.05')
+                        metavar='AFR',
+                        help='Annual failure rate. Default=0.05')
 
     parser.add_argument('-r', '--mttr',
                         type=int,
                         default=0,
+                        metavar='MTTR',
                         help='Mean time to recover. Default=0 (immediately)')
 
     parser.add_argument('-e', '--redundancy',
                         type=int,
                         default=0,
+                        metavar='REDUNDANCY',
                         help='Number of redundancy disks. Default=0 (no redundancy)')
 
     parser.add_argument('-l', '--elapsing',
                         type=int,
                         default=80000,
+                        metavar='ELAPSING',
                         help='Simulation time length. Default=80000')
 
     args = parser.parse_args()
     num_disks = args.numdisks
-    failure_prob = args.failureprob
+    afr = args.afr
     redundancy = args.redundancy
     mttr = args.mttr
     elapsing = args.elapsing
 
-    mttf = simulate_mttf(elapsing, num_disks, failure_prob, mttr, redundancy)
+    mttf = simulate_mttf(elapsing, num_disks, afr, mttr, redundancy)
     print("Estimated MTTF:", mttf)
 
 main()
