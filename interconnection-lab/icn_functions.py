@@ -21,17 +21,33 @@ def shuffle_sup(x, k, n):
     high_bits = x - low_bits
     return low_bits | ((high_bits << 1) & mask_sup) | ((high_bits >> (k - 1)) & (mask_sup - mask))
 
-# Under construction, to be verified ...
+def _swap_bits(x, i, j):
+    # Get the bit values of position i and j
+    bit_i = (x >> i) & 1
+    bit_j = (x >> j) & 1
+    
+    # Swap the values by XORing them
+    if (bit_i == 1):
+        x |= (1 << j)
+    else:
+        x &= ~(1 << j)
+    if (bit_j == 1):
+        x |= (1 << i)
+    else:
+        x &= ~(1 << i)
+    
+    # Return the result
+    return x
 
-def butterfly(x, n):
-    """蝶式函数"""
-    mask_a = (1 << n) - 1
-    mask_b = mask_a << n
-    a = x & mask_a
-    b = x & mask_b
-    b >>= n
-    c = a ^ b
-    return (x & ~mask_b) | (c << n)
+def butterfly_sub(x, k):
+    """蝶式函数第k(>=0)个子函数"""
+    return _swap_bits(x, 0, k)
+
+def butterfly_sup(x, k, n):
+    """蝶式函数第k个超函数"""
+    return _swap_bits(x, n-k-1, n-1)
+
+# Under construction, to be verified ...
 
 def bit_reverse(x, n):
     """反位序函数"""
