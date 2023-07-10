@@ -87,6 +87,7 @@ void load_csr(char *csr_fn) {
         csr_edges[num_e] = v_to;
         num_e++;
     }
+    csr_index[v_from + 1] = num_e;
 
     fclose(csr_fp);
 } /*End of load_csr()*/
