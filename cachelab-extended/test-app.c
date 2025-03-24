@@ -103,7 +103,7 @@ void eval_perf(unsigned int s, unsigned int E, unsigned int b, char *app_cmd)
  * usage - Print usage info
  */
 void usage(char *argv[]){
-    printf("Usage: %s [-h] -i <CSR file name>\n", argv[0]);
+    printf("Usage: %s [-h] -i <executable file name>\n", argv[0]);
     printf("Options:\n");
     printf("  -h         Print this help message.\n");
     printf("  -i <app>   app cmd\n");
