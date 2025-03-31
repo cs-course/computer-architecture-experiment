@@ -17,7 +17,7 @@ def process_output(output):
 def calculate_miss_rate(hit_count, miss_count):
     if hit_count == 0:
         return float('inf')  # Handle division by zero
-    return miss_count / hit_count
+    return miss_count / (hit_count + miss_count)
 
 def main():
     # Get trace file from command line argument or default to "traces/long.trace"

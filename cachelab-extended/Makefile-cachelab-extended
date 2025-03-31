@@ -1,0 +1,27 @@
+#
+# Student makefile for Cache Lab
+# Note: requires a 64-bit x86-64 system 
+#
+CC = gcc
+CFLAGS = -g -Wall -Werror -std=c99 -m64
+
+all: test-app loop transpose bfs
+
+test-app: test-app.c
+	$(CC) $(CFLAGS) -o test-app test-app.c cachelab.c
+
+loop: loop.c
+	$(CC) $(CFLAGS) -o loop loop.c cachelab.c
+
+transpose: transpose.c
+	$(CC) $(CFLAGS) -o transpose transpose.c cachelab.c
+
+bfs: bfs.c
+	$(CC) $(CFLAGS) -o bfs bfs.c
+
+#
+# Clean the src directory
+#
+clean:
+	rm -rf *.o
+	rm -f test-app loop transpose bfs
