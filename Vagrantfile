@@ -15,6 +15,6 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
     mv /home/vagrant/hust.list /etc/apt/sources.list.d/hust.list
     apt-get update
-    apt-get install -y build-essential valgrind
+    apt-get install -y build-essential valgrind python
   SHELL
 end
