@@ -14,11 +14,6 @@ def process_output(output):
     formatted_output = re.sub(r'\s+', ',', cleaned_output.strip())
     return formatted_output
 
-def calculate_miss_rate(hit_count, miss_count):
-    if hit_count == 0:
-        return float('inf')  # Handle division by zero
-    return miss_count / (hit_count + miss_count)
-
 def main():
     # Get trace file from command line argument or default to "traces/long.trace"
     trace = sys.argv[1] if len(sys.argv) > 1 else "traces/long.trace"
@@ -40,7 +35,7 @@ def main():
         for output in outputs:
             formatted_output = process_output(output)
             hit_count, miss_count, eviction_count = map(int, formatted_output.split(','))
-            miss_rate = calculate_miss_rate(hit_count, miss_count)
+            miss_rate = miss_count / (hit_count + miss_count)
             miss_rates.append(miss_rate)
         
         # Print the cache capacity and corresponding miss rates
