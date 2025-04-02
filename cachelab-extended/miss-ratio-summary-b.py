@@ -23,7 +23,7 @@ def main():
     
     # Define cache capacities and corresponding s values
     cache_capacities_kb = [1, 2, 4, 8]
-    initial_s_values = [6, 7, 8, 9]  # s = log2(capacity in KB) + 4
+    initial_s_values = [6, 7, 8, 9]  # s = log2(capacity in bytes) - 4
     
     # Block sizes in bytes and corresponding b values
     block_sizes_b = [4, 5, 6, 7, 8]  # b = log2(block size in bytes)
@@ -38,12 +38,9 @@ def main():
         miss_rates = []
         for output in outputs:
             formatted_output = process_output(output)
-            if formatted_output:
-                hit_count, miss_count, eviction_count = map(int, formatted_output.split(','))
-                miss_rate = miss_count / (hit_count + miss_count)
-                miss_rates.append(miss_rate)
-            else:
-                miss_rates.append(float('nan'))  # Handle cases where output is not as expected
+            hit_count, miss_count, eviction_count = map(int, formatted_output.split(','))
+            miss_rate = miss_count / (hit_count + miss_count)
+            miss_rates.append(miss_rate)
         
         # Print the cache capacity and corresponding miss rates
         print(f"{cache_capacity_kb},{miss_rates[0]:.3f},{miss_rates[1]:.3f},{miss_rates[2]:.3f},{miss_rates[3]:.3f},{miss_rates[4]:.3f}")
