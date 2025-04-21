@@ -74,6 +74,6 @@ def main():
     elapsing = args.elapsing
 
     mttf = simulate_mttf(elapsing, num_disks, afr, mttr, redundancy)
-    print("Estimated MTTF:", mttf)
+    print("Estimated MTTF: {:.2f}".format(mttf))
 
 main()
