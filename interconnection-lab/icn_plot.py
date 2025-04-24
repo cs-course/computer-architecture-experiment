@@ -15,7 +15,13 @@ part2 = [(n+8) for n in part1]
 
 # 使用互连函数将两部分节点连接
 for i in range(len(part1)):
-    G.add_edge(part1[i], part2[butterfly_sub(i, 2)])
+    G.add_edge(part1[i], part2[identity(i)])
+#    G.add_edge(part1[i], part2[switch(i, 0)])
+#    G.add_edge(part1[i], part2[shuffle_sub(i, 3)])
+#    G.add_edge(part1[i], part2[shuffle_sup(i, 2, 3)])
+#    G.add_edge(part1[i], part2[butterfly_sub(i, 2)])
+#    G.add_edge(part1[i], part2[butterfly_sub(i, 1)])
+#    G.add_edge(part1[i], part2[butterfly_sup(i, 1, 3)])
 
 # 绘制二部图
 pos = nx.bipartite_layout(G, part1)
